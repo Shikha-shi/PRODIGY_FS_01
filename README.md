@@ -21,14 +21,4 @@ The application implements a secure user authentication system that allows users
 - SQLAlchemy ORM
 - API testing using Postman
 
-
-## Tech Stack
-
--Backend: FastAPI
--Database: PostgreSQL
--ORM: SQLAlchemy
--Authentication: JWT
--Password Hashing: pwdlib
--API Testing: Postman
--Database Management: pgAdmin 4
   
