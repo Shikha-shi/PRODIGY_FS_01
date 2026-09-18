@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Auth - Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="logo">👑</div>
+
+            <h1>Admin Panel</h1>
+
+            <p class="subtitle">
+                Administrator access
+            </p>
+
+            <div class="user-info">
+                <p>
+                    <strong>Message:</strong>
+                    <span id="adminMessage">Loading...</span>
+                </p>
+
+                <p>
+                    <strong>User:</strong>
+                    <span id="adminUser">Loading...</span>
+                </p>
+
+                <p>
+                    <strong>Role:</strong>
+                    <span id="adminRole">Loading...</span>
+                </p>
+            </div>
+
+            <button id="backButton" class="btn">
+                Back to Dashboard
+            </button>
+
+            <button id="logoutButton" class="btn logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+        const API_URL = "http://127.0.0.1:8000";
+
+        const token = localStorage.getItem("access_token");
+
+        if (!token) {
+            window.location.href = "index.html";
+        }
+
+        async function loadAdminData() {
+
+            try {
+
+                const response = await fetch(`${API_URL}/auth/admin`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+
+                    alert(data.detail || "Admin access denied");
+
+                    window.location.href = "dashboard.html";
+
+                    return;
+                }
+
+                document.getElementById("adminMessage").textContent =
+                    data.message;
+
+                document.getElementById("adminUser").textContent =
+                    data.user;
+
+                document.getElementById("adminRole").textContent =
+                    data.role;
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert("Unable to connect to server.");
+            }
+        }
+
+        loadAdminData();
+
+
+        document.getElementById("backButton").addEventListener(
+            "click",
+            function () {
+                window.location.href = "dashboard.html";
+            }
+        );
+
+
+        document.getElementById("logoutButton").addEventListener(
+            "click",
+            function () {
+
+                localStorage.removeItem("access_token");
+
+                window.location.href = "index.html";
+            }
+        );
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Auth - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="logo">👤</div>
+
+            <h1>Dashboard</h1>
+
+            <p class="subtitle">
+                Welcome to your secure dashboard
+            </p>
+
+            <div class="user-info">
+
+                <p>
+                    <strong>Name:</strong>
+                    <span id="userName">Loading...</span>
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    <span id="userEmail">Loading...</span>
+                </p>
+
+                <p>
+                    <strong>Role:</strong>
+                    <span id="userRole">Loading...</span>
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span id="userStatus">Loading...</span>
+                </p>
+
+            </div>
+
+            <button id="adminButton" class="btn">
+                Admin Panel
+            </button>
+
+            <button id="logoutButton" class="btn logout-btn">
+                Logout
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
