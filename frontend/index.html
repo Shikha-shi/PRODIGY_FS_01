@@ -3,63 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Auth - Login</title>
+
+    <title>SecureAuth | Sign In</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
-    <div class="auth-container">
+    <div class="auth-page">
 
-        <div class="auth-card">
+        <!-- Left branding section -->
+        <section class="auth-brand">
 
-            <div class="logo">
-                🔐
+            <div class="brand-logo">
+                <div class="logo-mark">
+                    <i data-lucide="shield-check"></i>
+                </div>
+
+                <span>SecureAuth</span>
             </div>
 
-            <h1>Welcome Back</h1>
-            <p class="subtitle">Login to your account</p>
+            <div class="brand-content">
 
-            <form id="loginForm">
+                <span class="eyebrow">
+                    <span class="status-dot"></span>
+                    Secure authentication platform
+                </span>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                    >
+                <h1>
+                    Your identity.
+                    <span>Your security.</span>
+                </h1>
+
+                <p>
+                    A modern authentication system built with
+                    FastAPI, PostgreSQL, JWT and secure password hashing.
+                </p>
+
+                <div class="security-points">
+
+                    <div>
+                        <i data-lucide="shield"></i>
+                        <span>JWT secured authentication</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="lock-keyhole"></i>
+                        <span>Argon2 password protection</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="database"></i>
+                        <span>PostgreSQL powered</span>
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Enter your password"
-                        required
-                    >
+            </div>
+
+            <div class="brand-footer">
+                <span>Built with</span>
+                <strong>FastAPI · PostgreSQL · JWT</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Login section -->
+        <section class="auth-form-section">
+
+            <div class="mobile-logo">
+                <div class="logo-mark">
+                    <i data-lucide="shield-check"></i>
                 </div>
 
-                <button type="submit" class="btn">
-                    Login
-                </button>
+                <span>SecureAuth</span>
+            </div>
 
-            </form>
+            <div class="form-wrapper">
 
-            <p id="message"></p>
+                <div class="form-header">
 
-            <p class="switch-page">
-                Don't have an account?
-                <a href="register.html">Create account</a>
-            </p>
+                    <span class="form-icon">
+                        <i data-lucide="log-in"></i>
+                    </span>
 
-        </div>
+                    <h2>Welcome back</h2>
+
+                    <p>
+                        Sign in to access your secure dashboard.
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i data-lucide="mail"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <div class="label-row">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                        </div>
+
+                        <div class="input-wrapper">
+
+                            <i data-lucide="lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                            >
+                                <i data-lucide="eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-btn">
+
+                        <span>Sign in</span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <div id="message" class="message"></div>
+
+
+                <div class="divider">
+                    <span>New to SecureAuth?</span>
+                </div>
+
+
+                <a href="register.html" class="secondary-btn">
+                    Create an account
+                </a>
+
+
+                <div class="security-note">
+
+                    <i data-lucide="shield-check"></i>
+
+                    <span>
+                        Your credentials are securely protected.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="form-footer">
+                © 2026 SecureAuth · Internship Project
+            </div>
+
+        </section>
 
     </div>
 
+
     <script src="js/auth.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
 
 </body>
 </html>

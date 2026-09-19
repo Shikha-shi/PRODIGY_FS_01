@@ -1,124 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Auth - Admin</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SecureAuth - Admin Panel</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
-<body>
 
-    <div class="auth-container">
+<body class="dashboard-page">
 
-        <div class="auth-card">
 
-            <div class="logo">👑</div>
+    <div class="dashboard-layout">
 
-            <h1>Admin Panel</h1>
 
-            <p class="subtitle">
-                Administrator access
-            </p>
+        <!-- ================= SIDEBAR ================= -->
 
-            <div class="user-info">
-                <p>
-                    <strong>Message:</strong>
-                    <span id="adminMessage">Loading...</span>
-                </p>
+        <aside class="sidebar">
 
-                <p>
-                    <strong>User:</strong>
-                    <span id="adminUser">Loading...</span>
-                </p>
+            <div class="sidebar-brand">
 
-                <p>
-                    <strong>Role:</strong>
-                    <span id="adminRole">Loading...</span>
-                </p>
+                <div class="brand-icon">
+                    <i data-lucide="shield-check"></i>
+                </div>
+
+                <div>
+
+                    <h2>SecureAuth</h2>
+
+                    <span>
+                        Authentication System
+                    </span>
+
+                </div>
+
             </div>
 
-            <button id="backButton" class="btn">
-                Back to Dashboard
-            </button>
 
-            <button id="logoutButton" class="btn logout-btn">
-                Logout
-            </button>
+            <nav class="sidebar-nav">
 
-        </div>
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="admin.html"
+                    class="nav-item active"
+                >
+                    <i data-lucide="shield"></i>
+                    <span>Admin Panel</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="security-badge">
+
+                    <i data-lucide="shield-check"></i>
+
+                    <div>
+
+                        <strong>Admin Session</strong>
+
+                        <span>
+                            Privileged Access
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="logoutButton"
+                    class="sidebar-logout"
+                >
+
+                    <i data-lucide="log-out"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="dashboard-main">
+
+
+            <!-- HEADER -->
+
+            <header class="dashboard-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        SECUREAUTH / ADMIN
+                    </p>
+
+                    <h1>
+                        Admin Panel
+                    </h1>
+
+                    <p class="header-subtitle">
+                        Manage and monitor administrator-level
+                        authentication access.
+                    </p>
+
+                </div>
+
+
+                <div class="header-status admin-status">
+
+                    <span class="status-dot"></span>
+
+                    Administrator
+
+                </div>
+
+            </header>
+
+
+            <!-- ADMIN HERO -->
+
+            <section class="admin-hero">
+
+                <div class="admin-hero-icon">
+
+                    <i data-lucide="shield"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p class="card-label">
+                        PRIVILEGED ACCESS
+                    </p>
+
+                    <h2>
+                        Administrator Access Granted
+                    </h2>
+
+                    <p>
+                        You have successfully passed the
+                        authentication and role-based access
+                        control checks.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACCESS STATUS -->
+
+            <section class="stats-grid admin-stats">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon cyan">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            ACCESS
+                        </span>
+
+                        <strong>
+                            Granted
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i data-lucide="user-cog"></i>
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            ROLE
+                        </span>
+
+                        <strong id="adminRole">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i data-lucide="lock-keyhole"></i>
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            SECURITY
+                        </span>
+
+                        <strong>
+                            Protected
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- ADMIN INFORMATION -->
+
+            <section class="dashboard-grid">
+
+
+                <div class="dashboard-card">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <p class="card-label">
+                                ADMINISTRATOR
+                            </p>
+
+                            <h2>
+                                Access Information
+                            </h2>
+
+                        </div>
+
+
+                        <div class="heading-icon">
+
+                            <i data-lucide="badge-check"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-list">
+
+
+                        <div class="profile-row">
+
+                            <div class="profile-label">
+
+                                <i data-lucide="message-square"></i>
+
+                                <span>
+                                    Server Message
+                                </span>
+
+                            </div>
+
+                            <strong id="adminMessage">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-row">
+
+                            <div class="profile-label">
+
+                                <i data-lucide="user"></i>
+
+                                <span>
+                                    User
+                                </span>
+
+                            </div>
+
+                            <strong id="adminUser">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-row">
+
+                            <div class="profile-label">
+
+                                <i data-lucide="shield"></i>
+
+                                <span>
+                                    Role
+                                </span>
+
+                            </div>
+
+                            <span
+                                id="adminRoleBadge"
+                                class="role-badge"
+                            >
+                                Loading...
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY CHECKS -->
+
+                <div class="dashboard-card security-card">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <p class="card-label">
+                                SECURITY CHECKS
+                            </p>
+
+                            <h2>
+                                Authorization Status
+                            </h2>
+
+                        </div>
+
+
+                        <div class="heading-icon">
+
+                            <i data-lucide="shield-check"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-item">
+
+                        <div class="security-item-icon">
+                            <i data-lucide="key-round"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                JWT Token
+                            </strong>
+
+                            <p>
+                                Valid authentication token
+                                detected.
+                            </p>
+
+                        </div>
+
+                        <span class="verified">
+                            Passed
+                        </span>
+
+                    </div>
+
+
+                    <div class="security-item">
+
+                        <div class="security-item-icon">
+                            <i data-lucide="user-check"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                User Authentication
+                            </strong>
+
+                            <p>
+                                Authenticated user successfully
+                                identified.
+                            </p>
+
+                        </div>
+
+                        <span class="verified">
+                            Passed
+                        </span>
+
+                    </div>
+
+
+                    <div class="security-item">
+
+                        <div class="security-item-icon">
+                            <i data-lucide="shield"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Role Verification
+                            </strong>
+
+                            <p>
+                                Administrator role successfully
+                                verified.
+                            </p>
+
+                        </div>
+
+                        <span class="verified">
+                            Passed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACTIONS -->
+
+            <section class="admin-actions">
+
+                <button
+                    id="backButton"
+                    class="secondary-button"
+                >
+
+                    <i data-lucide="arrow-left"></i>
+
+                    Back to Dashboard
+
+                </button>
+
+
+                <button
+                    id="adminLogoutButton"
+                    class="danger-button"
+                >
+
+                    <i data-lucide="log-out"></i>
+
+                    Logout
+
+                </button>
+
+            </section>
+
+
+            <p
+                id="adminError"
+                class="dashboard-message"
+            ></p>
+
+
+            <!-- FOOTER -->
+
+            <footer class="dashboard-footer">
+
+                <span>
+                    SecureAuth Administration
+                </span>
+
+                <span>
+                    Role-Based Access Control
+                </span>
+
+            </footer>
+
+        </main>
 
     </div>
 
+
     <script>
-        const API_URL = "http://127.0.0.1:8000";
 
-        const token = localStorage.getItem("access_token");
+        const API_URL =
+            "http://127.0.0.1:8000";
 
+        const token =
+            localStorage.getItem("access_token");
+
+
+        // No token → Login
         if (!token) {
-            window.location.href = "index.html";
+
+            window.location.href =
+                "index.html";
+
         }
+
 
         async function loadAdminData() {
 
             try {
 
-                const response = await fetch(`${API_URL}/auth/admin`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": `Bearer ${token}`
-                    }
-                });
+                const response =
+                    await fetch(
+                        `${API_URL}/auth/admin`,
+                        {
+                            method: "GET",
 
-                const data = await response.json();
+                            headers: {
+                                "Authorization":
+                                    `Bearer ${token}`
+                            }
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
 
                 if (!response.ok) {
 
-                    alert(data.detail || "Admin access denied");
+                    document.getElementById(
+                        "adminError"
+                    ).textContent =
+                        data.detail ||
+                        "Admin access denied.";
 
-                    window.location.href = "dashboard.html";
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    }, 1500);
 
                     return;
                 }
 
-                document.getElementById("adminMessage").textContent =
+
+                document.getElementById(
+                    "adminMessage"
+                ).textContent =
                     data.message;
 
-                document.getElementById("adminUser").textContent =
+
+                document.getElementById(
+                    "adminUser"
+                ).textContent =
                     data.user;
 
-                document.getElementById("adminRole").textContent =
+
+                document.getElementById(
+                    "adminRole"
+                ).textContent =
                     data.role;
+
+
+                document.getElementById(
+                    "adminRoleBadge"
+                ).textContent =
+                    data.role;
+
 
             } catch (error) {
 
                 console.error(error);
 
-                alert("Unable to connect to server.");
+                document.getElementById(
+                    "adminError"
+                ).textContent =
+                    "Unable to connect to server.";
+
             }
+
         }
+
 
         loadAdminData();
 
 
-        document.getElementById("backButton").addEventListener(
+        // Back to dashboard
+        document.getElementById(
+            "backButton"
+        ).addEventListener(
             "click",
             function () {
-                window.location.href = "dashboard.html";
+
+                window.location.href =
+                    "dashboard.html";
+
             }
         );
 
 
-        document.getElementById("logoutButton").addEventListener(
+        // Logout
+        function logout() {
+
+            localStorage.removeItem(
+                "access_token"
+            );
+
+            window.location.href =
+                "index.html";
+        }
+
+
+        document.getElementById(
+            "logoutButton"
+        ).addEventListener(
             "click",
-            function () {
-
-                localStorage.removeItem("access_token");
-
-                window.location.href = "index.html";
-            }
+            logout
         );
+
+
+        document.getElementById(
+            "adminLogoutButton"
+        ).addEventListener(
+            "click",
+            logout
+        );
+
+
+        lucide.createIcons();
+
     </script>
 
 </body>
+
 </html>

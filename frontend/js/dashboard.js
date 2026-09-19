@@ -3,81 +3,246 @@ const API_URL = "http://127.0.0.1:8000";
 const token = localStorage.getItem("access_token");
 
 
-// No token → go back to login
+// ==========================================
+// CHECK LOGIN
+// ==========================================
+
 if (!token) {
     window.location.href = "index.html";
 }
 
 
-// Get current user
+// ==========================================
+// LOAD USER DATA
+// ==========================================
+
 async function loadUser() {
 
     try {
 
-        const response = await fetch(`${API_URL}/auth/me`, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`
+        const response = await fetch(
+            `${API_URL}/auth/me`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
             }
-        });
+        );
 
+
+        // Token invalid / expired
         if (!response.ok) {
 
             localStorage.removeItem("access_token");
+
             window.location.href = "index.html";
 
             return;
         }
 
+
         const user = await response.json();
 
-        document.getElementById("userName").textContent =
-            user.name;
+        console.log("Logged-in user:", user);
 
-        document.getElementById("userEmail").textContent =
-            user.email;
 
-        document.getElementById("userRole").textContent =
-            user.role;
+        // ==========================================
+        // USER NAME
+        // ==========================================
 
-        document.getElementById("userStatus").textContent =
-            user.is_active ? "Active" : "Inactive";
+        const welcomeName =
+            document.getElementById("userNameWelcome");
 
-        // Show admin button only to admins
-        if (user.role !== "admin") {
-            document.getElementById("adminButton").style.display =
-                "none";
+        const userName =
+            document.getElementById("userName");
+
+        const statName =
+            document.getElementById("statName");
+
+
+        if (welcomeName) {
+            welcomeName.textContent = user.name;
         }
 
-    } catch (error) {
+        if (userName) {
+            userName.textContent = user.name;
+        }
 
-        console.error(error);
+        if (statName) {
+            statName.textContent = user.name;
+        }
 
-        document.getElementById("message").textContent =
-            "Unable to connect to server.";
+
+        // ==========================================
+        // EMAIL
+        // ==========================================
+
+        const userEmail =
+            document.getElementById("userEmail");
+
+        if (userEmail) {
+            userEmail.textContent = user.email;
+        }
+
+
+        // ==========================================
+        // ROLE
+        // ==========================================
+
+        const userRole =
+            document.getElementById("userRole");
+
+        const statRole =
+            document.getElementById("statRole");
+
+
+        if (userRole) {
+            userRole.textContent = user.role;
+        }
+
+        if (statRole) {
+            statRole.textContent = user.role;
+        }
+
+
+        // ==========================================
+        // STATUS
+        // ==========================================
+
+        const statusText =
+            user.is_active ? "Active" : "Inactive";
+
+
+        const userStatus =
+            document.getElementById("userStatus");
+
+        const statStatus =
+            document.getElementById("statStatus");
+
+
+        if (userStatus) {
+            userStatus.textContent = statusText;
+        }
+
+        if (statStatus) {
+            statStatus.textContent = statusText;
+        }
+
+
+        // ==========================================
+        // ADMIN ACCESS
+        // ==========================================
+
+        if (user.role === "admin") {
+
+            const adminButton =
+                document.getElementById("adminButton");
+
+            const adminSection =
+                document.getElementById("adminSection");
+
+            const adminNav =
+                document.getElementById("adminNav");
+
+
+            if (adminButton) {
+                adminButton.style.display = "flex";
+            }
+
+            if (adminSection) {
+                adminSection.style.display = "flex";
+            }
+
+            if (adminNav) {
+                adminNav.style.display = "flex";
+            }
+
+        }
+
+
+        // ==========================================
+        // REMOVE LOADING MESSAGE
+        // ==========================================
+
+        const message =
+            document.getElementById("message");
+
+        if (message) {
+            message.textContent = "";
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Dashboard error:",
+            error
+        );
+
+        const message =
+            document.getElementById("message");
+
+        if (message) {
+            message.textContent =
+                "Unable to connect to authentication server.";
+        }
+
     }
 }
 
 
+// ==========================================
+// START
+// ==========================================
+
 loadUser();
 
 
-// Admin button
-document.getElementById("adminButton").addEventListener(
-    "click",
-    function () {
-        window.location.href = "admin.html";
-    }
-);
+// ==========================================
+// ADMIN BUTTON
+// ==========================================
+
+const adminButton =
+    document.getElementById("adminButton");
+
+if (adminButton) {
+
+    adminButton.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "admin.html";
+
+        }
+    );
+
+}
 
 
-// Logout
-document.getElementById("logoutButton").addEventListener(
-    "click",
-    function () {
+// ==========================================
+// LOGOUT
+// ==========================================
 
-        localStorage.removeItem("access_token");
+const logoutButton =
+    document.getElementById("logoutButton");
 
-        window.location.href = "index.html";
-    }
-);
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        function () {
+
+            localStorage.removeItem(
+                "access_token"
+            );
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
+}

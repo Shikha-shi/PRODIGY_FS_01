@@ -3,74 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Auth - Register</title>
+
+    <title>SecureAuth | Create Account</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
-    <div class="auth-container">
+    <div class="auth-page">
 
-        <div class="auth-card">
+        <!-- Branding -->
+        <section class="auth-brand">
 
-            <div class="logo">
-                🔐
+            <div class="brand-logo">
+
+                <div class="logo-mark">
+                    <i data-lucide="shield-check"></i>
+                </div>
+
+                <span>SecureAuth</span>
+
             </div>
 
-            <h1>Create Account</h1>
-            <p class="subtitle">Register a new account</p>
 
-            <form id="registerForm">
+            <div class="brand-content">
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your name"
-                        required
-                    >
+                <span class="eyebrow">
+                    <span class="status-dot"></span>
+                    Secure authentication platform
+                </span>
+
+                <h1>
+                    Create your
+                    <span>secure identity.</span>
+                </h1>
+
+                <p>
+                    Create an account and experience secure,
+                    JWT-based authentication with role-based access.
+                </p>
+
+
+                <div class="security-points">
+
+                    <div>
+                        <i data-lucide="user-plus"></i>
+                        <span>Simple account registration</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="key-round"></i>
+                        <span>Strong password hashing</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="badge-check"></i>
+                        <span>Protected user sessions</span>
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                    >
+            </div>
+
+
+            <div class="brand-footer">
+                <span>Built with</span>
+                <strong>FastAPI · PostgreSQL · JWT</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Register form -->
+        <section class="auth-form-section">
+
+            <div class="mobile-logo">
+
+                <div class="logo-mark">
+                    <i data-lucide="shield-check"></i>
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Minimum 8 characters"
-                        minlength="8"
-                        required
-                    >
+                <span>SecureAuth</span>
+
+            </div>
+
+
+            <div class="form-wrapper">
+
+                <div class="form-header">
+
+                    <span class="form-icon">
+                        <i data-lucide="user-plus"></i>
+                    </span>
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        Join SecureAuth in just a few seconds.
+                    </p>
+
                 </div>
 
-                <button type="submit" class="btn">
-                    Create Account
-                </button>
 
-            </form>
+                <form id="registerForm">
 
-            <p id="message"></p>
+                    <div class="input-group">
 
-            <p class="switch-page">
-                Already have an account?
-                <a href="index.html">Login</a>
-            </p>
+                        <label for="name">
+                            Full name
+                        </label>
 
-        </div>
+                        <div class="input-wrapper">
+
+                            <i data-lucide="user"></i>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i data-lucide="mail"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i data-lucide="lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Minimum 8 characters"
+                                minlength="8"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleRegisterPassword"
+                            >
+                                <i data-lucide="eye"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="password-hint">
+                            Use at least 8 characters for better security.
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-btn">
+
+                        <span>Create account</span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <div id="message" class="message"></div>
+
+
+                <div class="divider">
+                    <span>Already have an account?</span>
+                </div>
+
+
+                <a href="index.html" class="secondary-btn">
+                    Back to sign in
+                </a>
+
+
+                <div class="security-note">
+
+                    <i data-lucide="shield-check"></i>
+
+                    <span>
+                        Your password is never stored in plain text.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-footer">
+                © 2026 SecureAuth · Internship Project
+            </div>
+
+        </section>
 
     </div>
 
+
     <script src="js/auth.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
 
 </body>
 </html>
